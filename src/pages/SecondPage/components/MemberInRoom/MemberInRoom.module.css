@@ -1,0 +1,28 @@
+.container {
+  width: 15%;
+  height: 100vh;
+  background-color: #ff124f;
+}
+.userContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  font-size: 25px;
+  margin: 40px 0 0 0;
+}
+.groupUserContainer {
+  height: 85%;
+}
+.username {
+  margin-left: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 50px;
+}
+.userContainer img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
