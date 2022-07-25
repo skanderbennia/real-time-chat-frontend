@@ -14,12 +14,8 @@ export default function MemberInRoom() {
 
   useEffect(() => {
     setUsers([...users, { name: room.name + "'s Bot" }]);
-    fetch("http://localhost:4000/users")
-      .then((res) => res.json())
-      .then((res) => {
-        setUsers([{ name: room.name + "'s Bot" }, ...res]);
-      });
     socket.on("userJoined", (connectedUsers) => {
+      console.log(connectedUsers);
       setUsers([...users, ...connectedUsers]);
     });
     socket.on("userLeft", (connectedUsers) => {

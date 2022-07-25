@@ -13,7 +13,7 @@ export default function RoomCard(props) {
   const [unMute, setunMute] = useState(false);
   const joinChat = () => {
     const name = prompt("Enter your name", "Anonymous");
-    props.socket.emit("join", { name });
+    props.socket.emit("join", { name, roomName: props.room.name });
     setRoom(props.room);
     setUsername(name);
     navigate("/chat/" + props.room.id);

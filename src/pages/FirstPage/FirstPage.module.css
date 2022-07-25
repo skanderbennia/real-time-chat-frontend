@@ -2,7 +2,10 @@
 
 .containerRooms {
   width: 100%;
+  height: 100vh;
   display: grid;
   grid-template-columns: auto auto;
   padding: 100px 250px;
+  background: url("https://i.pinimg.com/originals/5c/dd/ad/5cddadeb5ed4d48a582cfeb328160826.gif")
+    no-repeat black 7cm 6cm fixed;
 }

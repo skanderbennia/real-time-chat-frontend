@@ -32,7 +32,7 @@ export default function FirstPage() {
     // };
   }, []);
   useEffect(() => {
-    introMusicRef.current.volume = 0.05;
+    introMusicRef.current.volume = 0;
   }, [introMusicRef]);
   return (
     <div className={Style.containerRooms}>

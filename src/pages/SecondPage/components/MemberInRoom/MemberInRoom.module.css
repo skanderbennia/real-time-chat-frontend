@@ -5,6 +5,10 @@
   background-color: var(--marineblue);
   border: 2px solid var(--gray);
 }
+body {
+  background-image: none;
+  background-color: var(--black);
+}
 .userContainer {
   display: flex;
   flex-direction: row;
