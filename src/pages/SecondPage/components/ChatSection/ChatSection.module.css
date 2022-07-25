@@ -1,8 +1,8 @@
 .topSection {
-  height: 10.6%;
+  height: 8%;
 }
 .allChat {
-  height: 87.75vh;
+  height: 87vh;
   width: 83vw;
   border: 2px solid var(--gray);
   border-left: none;

@@ -3,8 +3,7 @@ import Style from "./SnackBar.module.css";
 export default function SnackBar(props) {
   const snackbarRef = useRef();
   useEffect(() => {
-    console.log("hello");
-    openSnackbar();
+    if (props.text) openSnackbar();
   }, [props.text]);
   const openSnackbar = () => {
     snackbarRef.current.classList.add(Style.show);
