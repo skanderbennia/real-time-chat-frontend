@@ -10,32 +10,37 @@ export default function MemberInRoom() {
   const { room, username } = useContext(RoomContext);
   const { socket } = useContext(SocketContext);
   const [users, setUsers] = useState([]);
+  const [hoverDisconnect, setHoverDisconnect] = useState(false);
+
   useEffect(() => {
+    setUsers([...users, { name: room.name + "'s Bot" }]);
     fetch("http://localhost:4000/users")
       .then((res) => res.json())
       .then((res) => {
-        setUsers(res);
+        setUsers([{ name: room.name + "'s Bot" }, ...res]);
       });
-    socket.on("userJoined", (users) => {
-      setUsers(users);
+    socket.on("userJoined", (connectedUsers) => {
+      setUsers([...users, ...connectedUsers]);
     });
-    socket.on("userLeft", (users) => {
-      setUsers(users);
+    socket.on("userLeft", (connectedUsers) => {
+      setUsers([...connectedUsers, { name: room.name + "'s Bot" }]);
     });
   }, [room]);
   return (
     <div className={Style.container}>
-      <h1
-        style={{
-          backgroundColor: "orange",
-          height: 80,
-          display: "flex",
-          alignItems: "center",
-          padding: "0 20px ",
-        }}
-      >
-        {room.name}
-      </h1>
+      {/* audio door */}
+      {hoverDisconnect && (
+        <audio
+          src="http://localhost:3000/door.mp3"
+          autoPlay={true}
+          loop={true}
+          volume={0}
+        >
+          Your browser does not support the <code>audio</code> element.
+        </audio>
+      )}
+
+      <h1>{room.name}</h1>
       <div className={Style.groupUserContainer}>
         {users.map((user) => (
           <div className={Style.userContainer}>
@@ -55,17 +60,15 @@ export default function MemberInRoom() {
         ))}
       </div>
       <div
-        style={{
-          backgroundColor: "orange",
-          height: "100px",
-          padding: "0 150px ",
-          width: "100%",
-          fontSize: "20px",
-          display: "flex",
-          alignItems: "center",
+        onMouseEnter={() => {
+          setHoverDisconnect(true);
         }}
+        onMouseLeave={() => {
+          setHoverDisconnect(false);
+        }}
+        className={Style.buttonDisconnect}
         onClick={() => {
-          socket.emit("leave");
+          socket.disconnect();
           navigate("/");
         }}
       >

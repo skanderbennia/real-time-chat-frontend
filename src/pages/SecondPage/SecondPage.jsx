@@ -5,7 +5,7 @@ import MemberInRoom from "./components/MemberInRoom/MemberInRoom";
 
 export default function SecondPage() {
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "row" }}>
       <MemberInRoom />
       <ChatSection />
     </div>

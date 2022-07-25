@@ -1,6 +1,20 @@
+:root {
+  --brown: #63345e;
+  --darkpink: #ac61b9;
+  --gray: #b7c1de;
+  --marineblue: #0b468c;
+  --darkblue: #092047;
+  --cyan: #0bf2ce;
+  --black: #0a0919;
+  --redish: #d82061;
+  --darkred: #541836;
+  --darkgray: #312d3f;
+}
 body {
   font-family: "Weretiger";
-  background-color: #120458;
+
+  background: url("https://i.pinimg.com/originals/5c/dd/ad/5cddadeb5ed4d48a582cfeb328160826.gif")
+    no-repeat black 14cm 10cm fixed;
 }
 
 * {

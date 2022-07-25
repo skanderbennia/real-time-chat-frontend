@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
+import io from "socket.io-client";
 import RoomCard from "../../components/RoomCard/RoomCard";
 import Style from "./FirstPage.module.css";
 
@@ -7,32 +8,40 @@ import SocketContext from "../../contexte/socketContext";
 
 export default function FirstPage() {
   const navigate = useNavigate();
-  const { socket } = useContext(SocketContext);
-
+  const { socket, setSocket } = useContext(SocketContext);
+  const introMusicRef = useRef();
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
+    const socketVar = io.connect("http://localhost:4000");
+    setSocket(socketVar);
     fetch("http://localhost:4000/rooms")
       .then((res) => res.json())
       .then((res) => {
         setRooms(res);
       });
-    socket.on("connect", () => {
-      console.log("connected");
-    });
-    socket.on("error", (data) => {
+    socketVar.on("connect", () => {});
+    socketVar.on("error", (data) => {
       navigate("/");
     });
-    socket.on("disconnect", () => {});
+    socketVar.on("disconnect", () => {});
 
-    return () => {
-      socket.off("connect");
-      socket.off("disconnect");
-    };
+    // return () => {
+    //   socketVar.off("connect");
+    //   socketVar.off("disconnect");
+    // };
   }, []);
-
+  useEffect(() => {
+    introMusicRef.current.volume = 0.05;
+  }, [introMusicRef]);
   return (
     <div className={Style.containerRooms}>
+      <audio
+        src="http://localhost:3000/intromusic.mp3"
+        autoPlay={true}
+        ref={introMusicRef}
+        loop={true}
+      />
       {rooms.map((room) => (
         <RoomCard room={room} socket={socket} />
       ))}

@@ -1,0 +1,17 @@
+.topSection {
+  height: 8.25%;
+}
+.allChat {
+  height: 87.25vh;
+  width: 88vw;
+  border: 2px solid var(--gray);
+  border-left: none;
+  color: white;
+  overflow: scroll;
+}
+.writeMessage {
+  height: 4.25vh;
+  background-color: var(--gray);
+  width: 100%;
+  font-family: "Weretiger";
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import io from "socket.io-client";
@@ -9,14 +9,16 @@ import SocketContext from "./contexte/socketContext";
 
 import FirstPage from "./pages/FirstPage/FirstPage";
 import SecondPage from "./pages/SecondPage/SecondPage";
-const socket = io("http://localhost:4000");
+
 function App() {
+  const [socket, setSocket] = useState(null);
+
   const [room, setRoom] = useState({});
   const [username, setUsername] = useState("");
   return (
     <div className="App">
       <Router>
-        <SocketContext.Provider value={{ socket }}>
+        <SocketContext.Provider value={{ socket, setSocket }}>
           <RoomContext.Provider
             value={{ room, setRoom, username, setUsername }}
           >

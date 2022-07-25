@@ -59,7 +59,7 @@ export default function RoomCard(props) {
       </div>
       <div className={StyleSheet.buttonPanel}>
         {/* lock icon */}
-        <img src="http://localhost:3000/vault.png" height="32" width="32" />
+
         <Button onClick={joinChat} />
       </div>
     </div>

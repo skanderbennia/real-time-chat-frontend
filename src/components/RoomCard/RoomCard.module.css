@@ -1,9 +1,9 @@
 .container {
   display: flex;
-  border-radius: 5%;
-  background-color: #fe75fe;
-  height: 300px;
-  width: 600px;
+  border-radius: 5px;
+  background-color: var(--darkgray);
+  height: 220px;
+  width: 400px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -20,11 +20,20 @@
 .titleRoom {
   /* rotate text 90° */
   transform: rotate(-90deg);
-  font-size: 30px;
-  color: #120458;
+  font-size: 20px;
+  color: var(--cyan);
   width: 300px;
   height: 150px;
-  border-bottom: solid 4px #120458;
+  border-bottom: solid 4px var(--cyan);
+}
+.container:hover .titleRoom {
+  animation: neon 0.05s;
+  animation-direction: forwards;
+  animation-iteration-count: infinite;
+  color: var(--gray);
+}
+.container:hover .buttonPanel {
+  color: var(--redish);
 }
 .connectedUsers {
   padding: 100px 0;
@@ -39,18 +48,34 @@
   justify-content: space-between;
   padding: 10px 0px;
 }
+
 .userIcon {
   height: 50px;
   width: 50px;
   margin-left: -25px;
 }
-
+@spincolor {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes lightSpot {
   0% {
-    box-shadow: 5px 5px 10px 5px #ff124f;
+    box-shadow: 5px 5px 10px 1px var(--cyan);
     /* inner box */
   }
   100% {
-    box-shadow: 5px 5px 10px 8px #ff124f;
+    box-shadow: 5px 5px 10px -5px var(--cyan);
+  }
+}
+/* neon effect keyframe */
+@keyframes neon {
+  0% {
+    text-shadow: 0 0 10px var(--cyan);
+    border-color: var(--gray);
+  }
+  100% {
+    text-shadow: 0 0 3px var(--cyan);
+    border-color: var(--gray);
   }
 }
