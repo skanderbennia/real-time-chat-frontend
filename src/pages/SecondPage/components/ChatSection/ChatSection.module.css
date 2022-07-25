@@ -1,5 +1,5 @@
 .topSection {
-  height: 10.5%;
+  height: 10.6%;
 }
 .allChat {
   height: 87.75vh;
@@ -10,7 +10,7 @@
   overflow: scroll;
 }
 .writeMessage {
-  height: 5.5vh;
+  height: 5.1vh;
   background-color: var(--gray);
   width: 100%;
   font-family: "Weretiger";
