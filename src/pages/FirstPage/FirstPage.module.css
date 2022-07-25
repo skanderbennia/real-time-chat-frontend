@@ -1,8 +1,8 @@
 /* two item per line */
 
 .containerRooms {
-  width: 70%;
+  width: 100%;
   display: grid;
   grid-template-columns: auto auto;
-  padding: 100px 0 0 400px;
+  padding: 100px 250px;
 }
